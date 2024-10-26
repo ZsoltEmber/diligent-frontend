@@ -1,4 +1,7 @@
 import {Component} from "./general.js";
+import StarRatings from "../src/components/star-rating/star-ratings.js";
+
+
 
 window.onload = () => {
   console.log("hello world");
