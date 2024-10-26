@@ -16,7 +16,7 @@ export async function fetchData() {
 * @param {Object} getUpdatedData - expects an object wich will !!REPLACE!! the data.json file content 
 */
 
-export async function changeData(getUpdatedData) {
+export async function updateData(getUpdatedData) {
   try {
     const response = await fetch("http://localhost:3000/data", {
       method: "POST",
