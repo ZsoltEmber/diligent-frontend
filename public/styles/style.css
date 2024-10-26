@@ -1,3 +1,52 @@
 body {
     background-color: aqua;
 }
+
+.main {
+    background-color: rgb(237, 255, 255);
+    height: 92vh;
+    width: 100vw;
+}
+
+.nav {
+    background-color: #333;
+    height: 8vh;
+    width: 100vw;
+    border-bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    flex: 1;
+    height: 100%;
+}
+
+.nav-right {
+    display: flex;
+    height: 100%;
+}
+
+.navbar-item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+    width: max-content;
+    font-size: medium;
+    color: aliceblue;
+    transition: background-color 0.3s ease
+}
+
+.home {
+    font-size: larger;
+}
+
+
+.navbar-item:hover {
+    background-color: aliceblue;
+    color: #333;
+}
