@@ -1,52 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: aqua;
+  background-color: aqua;
 }
 
 .main {
-    background-color: rgb(237, 255, 255);
-    height: 92vh;
-    width: 100vw;
+  background-color: rgb(237, 255, 255);
+  height: 92vh;
+  width: 100vw;
 }
 
 .nav {
-    background-color: #333;
-    height: 8vh;
-    width: 100vw;
-    border-bottom: 1px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #333;
+  height: 8vh;
+  width: 100vw;
+  border-bottom: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-left {
-    flex: 1;
-    height: 100%;
+  flex: 1;
+  height: 100%;
 }
 
 .nav-right {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .navbar-item {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 100%;
-    width: max-content;
-    font-size: medium;
-    color: aliceblue;
-    transition: background-color 0.3s ease
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+  width: max-content;
+  font-size: medium;
+  color: aliceblue;
+  transition: background-color 0.3s ease;
 }
 
 .home {
-    font-size: larger;
+  font-size: larger;
 }
 
-
 .navbar-item:hover {
-    background-color: aliceblue;
-    color: #333;
+  background-color: aliceblue;
+  color: #333;
+}
+
+/* Login/registration */
+
+.form-wrapper {
+  background-color: rgb(237, 255, 255);
+  border-radius: 12px;
+  box-shadow: 1px 2px 5px #333;
+  width: fit-content;
+  margin: 5% auto;
+  padding: 80px;
+}
+.form-header {
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 18px;
+  width: 100%;
+}
+
+.form-label {
+  font-size: medium;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: aliceblue;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+  transition: background-color 0.3s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.form-button:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+  color: #333;
 }
