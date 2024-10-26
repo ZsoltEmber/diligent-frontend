@@ -1,0 +1,24 @@
+.star-rating-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+    max-width: max-content;
+}
+.star{
+    font-size: 1.2rem;
+    width: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-rating{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    border: 1px solid gray;
+}
+.bold-text{
+    font-weight: 800;
+}
