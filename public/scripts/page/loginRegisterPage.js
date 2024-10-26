@@ -19,7 +19,7 @@ export function createForm(formType = "login") {
     "label",
     {
       id: `${formType}-email-label`,
-      class: "email-label",
+      class: "form-label",
       for: `${formType}-email`,
     },
     ["Email:", emailInput]
@@ -52,11 +52,11 @@ export function createForm(formType = "login") {
     [emailLabel, passwordLabel, formButton]
   ).render();
 
-  const loginContainer = new Component(
+  const formWrapper = new Component(
     "div",
-    { id: `${formType}-container`, class: "form-container" },
+    { id: `${formType}-container`, class: "form-wrapper" },
     [form]
   );
 
-  return loginContainer.render();
+  return formWrapper.render();
 }
