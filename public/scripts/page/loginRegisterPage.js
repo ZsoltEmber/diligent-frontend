@@ -4,6 +4,27 @@ export function createForm(formType = "login") {
   //formType = "login" or "registrate"
 
   const buttonTitle = formType === "login" ? "Login" : "Registrate";
+  const formTitle = formType === "login" ? "Sign in" : "Create account";
+  const formSubtitle =
+    formType === "login" ? "Please enter your email and password." : "";
+
+  const headerTitle = new Component(
+    "h2",
+    { id: "header-title", class: "header-title" },
+    [formTitle]
+  ).render();
+
+  const headerSubtitle = new Component(
+    "p",
+    { id: "header-subtitle", class: "header-subtitle" },
+    [formSubtitle]
+  ).render();
+
+  const formHeader = new Component(
+    "div",
+    { id: "form-header", class: "form-header" },
+    [headerTitle, headerSubtitle]
+  ).render();
 
   const emailInput = new Component(
     "input",
@@ -55,7 +76,7 @@ export function createForm(formType = "login") {
   const formWrapper = new Component(
     "div",
     { id: `${formType}-container`, class: "form-wrapper" },
-    [form]
+    [formHeader, form]
   );
 
   return formWrapper.render();
