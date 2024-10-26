@@ -31,31 +31,3 @@ export class Component {
       return node;
     }
   }
-
-  
-
-  /*
-import fs from 'fs';
-
-  export const readData = async () => {
-  try {
-    const data = await fs.readFile('../../database/data.json', 'utf8');
-    if (!data) return [];
-    return JSON.parse(data);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      console.log("nemmükszik")
-      return [];
-    }
-    throw error;
-  }
-};
-
-export const writeData = async (data) => {
-  try {
-    await fs.writeFile('../../database/data.json', JSON.stringify(data, null, 2));
-  } catch (error) {
-    throw error;
-  }
-};
-*/
