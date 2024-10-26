@@ -12,8 +12,8 @@ class StarRatings{
         this.stars = this.createStars();
         this.containerElement = null;
         this.currentRating = 0;
-
     }
+
     fillStars = (highestStarNumber) =>{
         this.stars.forEach((starElement,index) =>{
             starElement.innerText = index<highestStarNumber? '⭐':'☆'; 
@@ -23,7 +23,7 @@ class StarRatings{
     handleHoverOverStar = (event) =>{
         const starData = event.target.dataset.star;
         this.fillStars(starData);
-        console.log(starData);
+       
     }
     handleMouseOut = ()=>{
         this.fillStars(this.currentRating);
@@ -31,7 +31,7 @@ class StarRatings{
     handleChooseRating =(event)=>{
         const starData = event.target.dataset.star;
         this.currentRating = starData;
-        console.log("this.currentRating",this.currentRating);
+     
     }
 
     createStar(dataStar){
