@@ -31,3 +31,16 @@ export class Component {
       return node;
     }
   }
+
+/**
+* Returns the content of the cart (sessionStorage) as an array of product objects 
+* @returns {Array} [{id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }]
+*/
+  export function getCartContent(){
+    const currentCart = sessionStorage.getItem('cart')
+    if(!currentCart){
+      return [];
+    }
+    return JSON.parse(currentCart);
+  }
+
