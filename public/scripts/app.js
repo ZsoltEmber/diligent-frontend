@@ -1,5 +1,5 @@
 import {Component} from "./general.js";
-
+import StarRatings from "./components/star-ratings.js";
 window.onload = () => {
   console.log("hello world");
   const text = new Component("p", {}, ["Valami", "semmi"]);
