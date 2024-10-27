@@ -1,4 +1,4 @@
-import { Component } from "../general.js";
+import { changeForm, Component } from "../general.js";
 
 export function createForm(formType = "login") {
   //formType = "login" or "registrate"
@@ -7,6 +7,7 @@ export function createForm(formType = "login") {
   const formTitle = formType === "login" ? "Sign in" : "Create account";
   const formSubtitle =
     formType === "login" ? "Please enter your email and password." : "";
+  const formFooterText = formType === "login" ? "Create account" : "Sign in";
 
   const headerTitle = new Component(
     "h2",
@@ -73,10 +74,27 @@ export function createForm(formType = "login") {
     [emailLabel, passwordLabel, formButton]
   ).render();
 
+  const footerText = new Component(
+    "p",
+    { id: "footer-text", class: "footer-text" },
+    [formFooterText],
+    {
+      click: () => {
+        changeForm(formType);
+      },
+    }
+  ).render();
+
+  const formFooter = new Component(
+    "div",
+    { id: "form-footer", class: "form-footer" },
+    [footerText]
+  ).render();
+
   const formWrapper = new Component(
     "div",
     { id: `${formType}-container`, class: "form-wrapper" },
-    [formHeader, form]
+    [formHeader, form, formFooter]
   );
 
   return formWrapper.render();
