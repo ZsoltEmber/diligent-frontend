@@ -32,6 +32,11 @@ export class Component {
     }
   }
 
+
+//   export function checkProductObject(getProduct){
+
+// }
+
 /**
 * Returns the content of the cart (sessionStorage) as an array of product objects 
 * @returns {Array} [{id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }]
@@ -44,3 +49,17 @@ export class Component {
     return JSON.parse(currentCart);
   }
 
+/**
+* adds the given product object to an array of product objects in cart (sessionStorage) 
+* @param  {Object} {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+*/
+export function addToCart(getProduct){
+  const currentCart = sessionStorage.getItem('cart')
+  if(!currentCart){
+    sessionStorage.setItem('cart',JSON.stringify([getProduct]));
+    return;
+  }
+  const originalData = getCartContent();
+  originalData.push(getProduct);
+  sessionStorage.setItem('cart',JSON.stringify(originalData));
+}
