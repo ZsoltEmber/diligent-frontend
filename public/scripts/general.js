@@ -32,10 +32,30 @@ export class Component {
     }
   }
 
-
-//   export function checkProductObject(getProduct){
-
-// }
+/**
+* checks if the given object is valid product, returns boolean 
+* @param  {Object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* @returns {boolean} - if the given object is valid product, returns boolean
+*/
+export function checkProductObject(getProduct){
+  if(typeof getProduct !== "object"){
+   console.error("Wrong value type! The given parameter is not the type 'object'!") 
+    return false;
+  }
+  let isValid = true;
+  let errorMessage = '';
+  const propertysToFind = ['id', 'title', 'price', 'description', 'category', 'image', 'rating']
+  propertysToFind.forEach(key=>{
+    if(!getProduct.hasOwnProperty(key)){
+      errorMessage+= ` ${key},`;
+      isValid = false;
+    }
+  })
+  if(errorMessage){
+    console.error("The given parameter is missing the following keys:",errorMessage);
+  }
+  return isValid;
+}
 
 /**
 * Returns the content of the cart (sessionStorage) as an array of product objects 
@@ -51,7 +71,7 @@ export class Component {
 
 /**
 * adds the given product object to an array of product objects in cart (sessionStorage) 
-* @param  {Object} {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* @param {Object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
 */
 export function addToCart(getProduct){
   const currentCart = sessionStorage.getItem('cart')
