@@ -18,7 +18,7 @@ body {
   width: 100vw;
   border-bottom: 1px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -109,3 +109,94 @@ body {
   cursor: pointer;
   color: #333;
 }
+
+/*Product detail page*/
+.product-detail--wrapper{
+  background-color: rgb(237, 255, 255);
+  border-radius: 1rem;
+  box-shadow: 1px 2px 5px #333;
+  width: 90%;
+  margin: 5% auto;
+  padding: 2rem;
+}
+
+.product-detail--img{
+  max-width: 45vmin; /* TODO making desin responsive*/
+  max-height: 45vmin;
+}
+.product-detail--img-container{
+  display: flex;
+  max-width: 50% ;
+  position: relative;
+  border-radius: inherit;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.product-detail--zoom-img{
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  padding: 0.6rem;
+  background-color: aliceblue;
+  border: 1px dotted aqua;
+  border-radius: 50%;
+  box-shadow: 1px 2px 5px #333;
+}
+.product-detail--zoom-img:hover{
+  background-color: white;
+  border-width: 3;
+}
+.display-flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* TODO making desin responsive*/
+  justify-content: space-between;
+  gap: 2rem;
+}
+.product-detail--info-container{
+  width: 50%;
+  padding: 1rem;
+  background-color: white;
+  border-radius: inherit;
+}
+.dinamic-text-size{
+  font-size: clamp(1rem, 2.5vw, 2rem); 
+}
+.product-detail--description{
+  overflow:hidden;
+}
+
+.product-detail--price-span{
+  font-size: larger;
+  font-weight: 800;
+}
+.product-detail--dialog-img{
+  width: 100%;
+}
+
+.product-detail--img-container-dialog{
+  border:0 solid white;
+  border-radius: inherit;
+}
+.product-detail--img-container-dialog::backdrop{
+  background: rgba(10, 10, 10, 0.3);
+}
+
+@media only screen and (max-width: 500px) {
+  .display-flex-container{
+    flex-direction: column-reverse;
+  }
+
+  .product-detail--img-container{
+    max-width: 100%;
+  }
+  .product-detail--img{
+    max-width: 65vmin;
+    max-height: 65vmin;
+  }
+  .product-detail--info-container{
+    width: 100%;
+  }
+}
+
