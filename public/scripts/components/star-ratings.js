@@ -1,5 +1,5 @@
-import { Component } from "../../../scripts/general.js";
-import { fetchData,updateData } from "../../../scripts/client.js";
+import { Component } from "../general.js";
+import { fetchData,updateData } from "../client.js";
 /** 
 * @param {string} productId - a string of the Id number of the product wich is rated with stars
 @param {Object} otherUsersRating - it expects an object from API data's "rating" key. For example: {"rate": 3.9,"count": 120}
@@ -58,7 +58,7 @@ export default class StarRatings{
         
         const updatedData = [...originalData];
             updatedData.splice(indexOfProduct,1,productToChange);
-            console.log("updatedData: ",updatedData)
+            
         updateData(updatedData);
         
     }
@@ -94,15 +94,10 @@ export default class StarRatings{
         
         this.containerElement.innerHTML = "";
         this.containerElement.append(othersRating.render(),userRatingContainer.render())
-        console.log(this.containerElement)
+        
     }
     render(){
         this.updateContainer();
         return this.containerElement;
     }
 }
-
-let x = new StarRatings(1,{"rate": 3.9,"count": 5});
-console.log(x)
-document.body.append(x.render())
-console.log(typeof x.stars[0].dataset.star);
