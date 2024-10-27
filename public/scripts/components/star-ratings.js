@@ -58,7 +58,7 @@ export default class StarRatings{
         
         const updatedData = [...originalData];
             updatedData.splice(indexOfProduct,1,productToChange);
-            console.log("updatedData: ",updatedData)
+            
         updateData(updatedData);
         
     }
@@ -94,7 +94,7 @@ export default class StarRatings{
         
         this.containerElement.innerHTML = "";
         this.containerElement.append(othersRating.render(),userRatingContainer.render())
-        console.log(this.containerElement)
+        
     }
     render(){
         this.updateContainer();
@@ -102,7 +102,7 @@ export default class StarRatings{
     }
 }
 
-let x = new StarRatings(1,{"rate": 3.9,"count": 5});
-console.log(x)
+let x = new StarRatings(1,{"rate": 3.9,"count": 1});
+
 document.body.append(x.render())
-console.log(typeof x.stars[0].dataset.star);
+
