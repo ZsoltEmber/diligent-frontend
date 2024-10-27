@@ -74,6 +74,9 @@ export function checkProductObject(getProduct){
 * @param {Object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
 */
 export function addToCart(getProduct){
+  if(!checkProductObject(getProduct)){
+    return;
+  };
   const currentCart = sessionStorage.getItem('cart')
   if(!currentCart){
     sessionStorage.setItem('cart',JSON.stringify([getProduct]));
