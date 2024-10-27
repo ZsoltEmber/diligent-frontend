@@ -101,8 +101,3 @@ export default class StarRatings{
         return this.containerElement;
     }
 }
-
-let x = new StarRatings(1,{"rate": 3.9,"count": 1});
-
-document.body.append(x.render())
-
