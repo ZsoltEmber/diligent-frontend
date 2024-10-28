@@ -113,6 +113,14 @@ body {
   color: #333;
 }
 
+.footer-text {
+  color: #0066c0;
+}
+.footer-text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /*Product detail page*/
 .product-detail--wrapper {
   background-color: rgb(237, 255, 255);
@@ -125,7 +133,6 @@ body {
 
 .product-detail--img {
   max-width: 45vmin;
-  /* TODO making desin responsive*/
   max-height: 45vmin;
 }
 
@@ -170,7 +177,6 @@ body {
   background-color: white;
   border-radius: inherit;
 }
-
 .dinamic-text-size {
   font-size: clamp(1rem, 2.5vw, 2rem);
 }
@@ -215,8 +221,6 @@ body {
     width: 100%;
   }
 }
-
-
 
 .product-details-container {
   display: flex;
@@ -289,4 +293,3 @@ body {
   height: 30px;
   width: 30px;
 }
-
