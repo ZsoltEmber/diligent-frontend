@@ -65,13 +65,22 @@ export function createForm(formType = "login") {
 
   const formButton = new Component(
     "button",
-    { id: `${formType}-button`, class: "form-button" },
+    { id: `${formType}-button`, class: "form-button", type: "button" },
     [buttonTitle],
     {
-      click: async (event) => {
-        event.preventDefault();
-
+      click: async () => {
+        console.log("formtype", formType);
         if (formType === "registrate") {
+          console.log("email input", emailInput.value);
+          if (!emailInput.value) {
+            alert("Provide an email address");
+            return;
+          }
+          if (!passwordInput.value || passwordInput.value.length < 8) {
+            alert("Password should be at least 8 characters long");
+            return;
+          }
+
           await saveUserData({
             email: emailInput.value,
             password: passwordInput.value,
