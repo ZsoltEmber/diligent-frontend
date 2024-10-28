@@ -154,3 +154,20 @@ export function findInCartById(id) {
   return { product: foundProducts[0], index: foundIndex };
 }
 
+/**
+ * Removes a product with a particular id from the Cart.
+ * @param  {number} id - the id of the product to delete.
+ */
+
+export function removeCartItem(id){
+  const dataToChange = getCartContent();
+
+  const productToDelete = findInCartById(id);
+  if (productToDelete == null) {
+    console.log("There is no product in cart with the given id!")
+    return;  
+  } else {
+    dataToChange.splice(productToDelete.index, 1);
+  }
+  localStorage.setItem(getKeyOfUsersCart(), JSON.stringify(dataToChange));
+}
