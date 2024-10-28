@@ -60,3 +60,26 @@ export async function saveUserData(newUserData) {
     return error.message;
   }
 }
+
+export async function loginWithEmailAndPassword(newUserData) {
+  try {
+    console.log("Sending user data:", newUserData);
+    const response = await fetch("http://localhost:3000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserData),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    } else {
+      const data = await response.json();
+      localStorage.setItem("signedUserId", data.id);
+      return data;
+    }
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  }
+}

@@ -1,4 +1,4 @@
-import { saveUserData } from "../client.js";
+import { loginWithEmailAndPassword, saveUserData } from "../client.js";
 import { changeForm, Component } from "../general.js";
 
 export function createForm(formType = "login") {
@@ -70,14 +70,20 @@ export function createForm(formType = "login") {
     {
       click: async (event) => {
         event.preventDefault();
-        console.log("clicked", formType);
-        console.log("emailInput", emailInput.value);
-        console.log("passwordInput", passwordInput.value);
 
-        await saveUserData({
-          email: emailInput.value,
-          password: passwordInput.value,
-        });
+        if (formType === "registrate") {
+          await saveUserData({
+            email: emailInput.value,
+            password: passwordInput.value,
+          });
+        }
+
+        if (formType === "login") {
+          await loginWithEmailAndPassword({
+            email: emailInput.value,
+            password: passwordInput.value,
+          });
+        }
       },
     }
   ).render();

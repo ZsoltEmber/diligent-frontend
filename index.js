@@ -65,6 +65,25 @@ app.post("/users/add", (req, res) => {
   console.log(`Successfully registered new user: ${email}`);
 });
 
+//
+
+app.post("/users/login", (req, res) => {
+  const { email, password } = req.body;
+  let users = JSON.parse(fs.readFileSync(userDatabase, "utf-8"));
+  console.log("Received data:", req.body);
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (!user) {
+    res.status(404).json({ message: "User not found" });
+  }
+
+  res.status(200).json({ id: user.id });
+});
+
+//
+
 app.listen(port, () => {
   console.log(`Runs on: http://localhost:${port}`);
 });

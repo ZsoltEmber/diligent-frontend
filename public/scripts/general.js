@@ -40,3 +40,5 @@ export function changeForm(formType) {
   const replacedForm = createForm(formType);
   formToBeReplaced.replaceWith(replacedForm);
 }
+
+// loginWithEmailAndPassword
