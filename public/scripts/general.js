@@ -59,7 +59,7 @@ export function checkProductObject(getProduct){
 
 /**
 * Returns the content of the cart (sessionStorage) as an array of product objects 
-* @returns {Array} [{id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }]
+* @returns {{id: number, title: string, price: number, image: url, amount:number}[]} returns an array of objects from the cart.
 */
   export function getCartContent(){
     const currentCart = sessionStorage.getItem('cart')
@@ -71,7 +71,7 @@ export function checkProductObject(getProduct){
 
 /**
 * adds the given product object to an array of product objects in cart (sessionStorage) 
-* @param {Object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* @param {object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
 */
 export function addToCart(getProduct){
   if(!checkProductObject(getProduct)){
@@ -85,4 +85,29 @@ export function addToCart(getProduct){
   const originalData = getCartContent();
   originalData.push(getProduct);
   sessionStorage.setItem('cart',JSON.stringify(originalData));
+}
+
+/**
+* Searching for a product with a particular id, and returns an object containing the product and the index of it in Cart.
+* @param  {number} id - the id of the product to find.
+* @returns {{product:object,index:number}|null} - if the product not exists returns null, else returns an object containing the product and the index of it in Cart : {product,index}
+*/
+function findInCartById(id){
+  const currentCart = sessionStorage.getItem('cart')
+  if(!currentCart){
+    console.warn('The cart is empty!');
+    return null;
+  }
+
+  let foundIndex;
+  const foundProducts = JSON.parse(currentCart).filter((product,index)=>
+    {
+      if(product.id == id){ foundIndex = index;};
+      return product.id == id;
+    }
+  );
+  if(foundProducts.length === 0){
+    return null;
+  }
+  return {product: foundProducts[0], index: foundIndex};
 }
