@@ -5,5 +5,5 @@ import { createForm } from "./page/loginRegisterPage.js";
 
 window.onload = () => {
   console.log("hello world");
-  document.body.append(createForm());
+  document.body.append(createForm("registrate"));
 };

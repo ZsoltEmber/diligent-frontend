@@ -8,5 +8,55 @@
     "id": 2,
     "email": "admin@admin.com",
     "password": "admin"
+  },
+  {
+    "id": 3,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 4,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 5,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 6,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 7,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 8,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 9,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 10,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 11,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
+  },
+  {
+    "id": 12,
+    "email": "kicsimicsi@csicsi.li",
+    "password": "shdlkdlk"
   }
 ]
