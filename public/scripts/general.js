@@ -1,8 +1,8 @@
 /** 
 * @param {string} tag - the tag of the html element
-* @param {Object} attributes - a key-value pair, representing html attributes for expl. {id:'idOfElement'}
+* @param {object} attributes - a key-value pair, representing html attributes for expl. {id:'idOfElement'}
 * @param {Array} attributes - an array of nodes (html elements) to append to the element as children
-* @param {Object} listenerObj - a key value pair, the key is the event name, value is the function to add as eventListener {'click':()=>{console.log('')}}
+* @param {object} listenerObj - a key value pair, the key is the event name, value is the function to add as eventListener {'click':()=>{console.log('')}}
 */
 export class Component {
     constructor(tag = "div", attributes = {}, children = [], listenerObj) {
@@ -32,12 +32,26 @@ export class Component {
     }
   }
 
+function isCartExits(){
+  // TODO : different users shoud have different carts! Maybe use username from cookies?
+  const currentCart = sessionStorage.getItem('cart')
+  return Boolean(currentCart);
+}
+
+function setEmptyCart(){
+  // TODO : different users shoud have different carts! Maybe use username from cookies?
+  if(isCartExits()){return;}
+  else{
+    sessionStorage.setItem('cart','[]');
+  }
+} 
+
 /**
-* checks if the given object is valid product, returns boolean 
-* @param  {Object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* checks if the given object is valid product object, returns boolean 
+* @param  {{id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
 * @returns {boolean} - if the given object is valid product, returns boolean
 */
-export function checkProductObject(getProduct){
+export function isTypeProduct(getProduct){
   if(typeof getProduct !== "object"){
    console.error("Wrong value type! The given parameter is not the type 'object'!") 
     return false;
@@ -62,6 +76,7 @@ export function checkProductObject(getProduct){
 * @returns {{id: number, title: string, price: number, image: url, amount:number}[]} returns an array of objects from the cart.
 */
   export function getCartContent(){
+    // TODO : different users shoud have different carts! Maybe use username from cookies?
     const currentCart = sessionStorage.getItem('cart')
     if(!currentCart){
       return [];
@@ -71,19 +86,33 @@ export function checkProductObject(getProduct){
 
 /**
 * adds the given product object to an array of product objects in cart (sessionStorage) 
-* @param {object} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* @param {{id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} } | {id: number, title: string, price: number, image: url, amount:number}} getProduct {id: number, title: string, price: number, description: string, category: string, image: url, rating: {rate: number,count: number} }
+* @param {number} newAmount - the new number of the added product.
 */
-export function addToCart(getProduct){
-  if(!checkProductObject(getProduct)){
-    return;
-  };
-  const currentCart = sessionStorage.getItem('cart')
-  if(!currentCart){
-    sessionStorage.setItem('cart',JSON.stringify([getProduct]));
-    return;
-  }
+export function addToCart(getProduct,newAmount){
+  // TODO : different users shoud have different carts! Maybe use username from cookies?
   const originalData = getCartContent();
-  originalData.push(getProduct);
+  
+  const newCartItem = {
+    id: getProduct.id,
+    title: getProduct.title,
+    price: getProduct.price,
+    image: getProduct.image,
+    amount: newAmount,
+   };
+
+   if(!isCartExits){
+    sessionStorage.setItem('cart',JSON.stringify([newCartItem]));
+    return;
+ }
+
+  const storedProduct = findInCartById(getProduct.id);
+  if(storedProduct !== null){
+    originalData.splice(storedProduct.index,1,newCartItem);
+  } else {
+    originalData.push(newCartItem);
+  }
+  
   sessionStorage.setItem('cart',JSON.stringify(originalData));
 }
 
@@ -92,13 +121,13 @@ export function addToCart(getProduct){
 * @param  {number} id - the id of the product to find.
 * @returns {{product:object,index:number}|null} - if the product not exists returns null, else returns an object containing the product and the index of it in Cart : {product,index}
 */
-function findInCartById(id){
+export function findInCartById(id){
+  // TODO : different users shoud have different carts! Maybe use username from cookies?
   const currentCart = sessionStorage.getItem('cart')
   if(!currentCart){
     console.warn('The cart is empty!');
     return null;
   }
-
   let foundIndex;
   const foundProducts = JSON.parse(currentCart).filter((product,index)=>
     {
