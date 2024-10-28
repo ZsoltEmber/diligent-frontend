@@ -1,3 +1,4 @@
+import { saveUserData } from "../client.js";
 import { changeForm, Component } from "../general.js";
 
 export function createForm(formType = "login") {
@@ -65,7 +66,20 @@ export function createForm(formType = "login") {
   const formButton = new Component(
     "button",
     { id: `${formType}-button`, class: "form-button" },
-    [buttonTitle]
+    [buttonTitle],
+    {
+      click: async (event) => {
+        event.preventDefault();
+        console.log("clicked", formType);
+        console.log("emailInput", emailInput.value);
+        console.log("passwordInput", passwordInput.value);
+
+        await saveUserData({
+          email: emailInput.value,
+          password: passwordInput.value,
+        });
+      },
+    }
   ).render();
 
   const form = new Component(

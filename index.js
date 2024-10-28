@@ -40,22 +40,29 @@ app.post("/data", (req, res) => {
 });
 
 // post users
-app.post("/users", (req, res) => {
-  const newUser = req.body;
 
-  fs.writeFile(
-    path.join("./database/", "users.json"),
-    JSON.stringify(newUser, null, 2),
-    "utf8",
-    (err) => {
-      if (err) {
-        console.error("An error occured during writeing file:", err);
-        res.status(500).send("An error occured while saving data.");
-      } else {
-        res.status(200).send("Data succesfully changed.");
-      }
-    }
-  );
+const userDatabase = "./database/users.json";
+let users = JSON.parse(fs.readFileSync(userDatabase, "utf-8"));
+
+app.get("/users", (req, res) => {
+  res.json(users);
+});
+
+app.post("/users/add", (req, res) => {
+  const { email, password } = req.body;
+
+  console.log("Received data:", req.body);
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required." });
+  }
+
+  const newUser = { id: users.length + 1, email, password };
+  users.push(newUser);
+  fs.writeFileSync(userDatabase, JSON.stringify(users, null, 2), "utf-8");
+
+  res.status(201).json(newUser);
+  console.log(`Successfully registered new user: ${email}`);
 });
 
 app.listen(port, () => {

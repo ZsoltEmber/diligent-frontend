@@ -41,7 +41,8 @@ export async function updateData(getUpdatedData) {
 
 export async function saveUserData(newUserData) {
   try {
-    const response = await fetch("http://localhost:3000/users", {
+    console.log("Sending user data:", newUserData);
+    const response = await fetch("http://localhost:3000/users/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +52,8 @@ export async function saveUserData(newUserData) {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     } else {
-      return await response.json();
+      const data = await response.json();
+      return data;
     }
   } catch (error) {
     console.error(error.message);
