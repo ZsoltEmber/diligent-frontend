@@ -41,4 +41,19 @@ export function changeForm(formType) {
   formToBeReplaced.replaceWith(replacedForm);
 }
 
-// loginWithEmailAndPassword
+export function validateForm(inputType, value) {
+  if (inputType === "email") {
+    if (!value) {
+      alert("Provide an email address");
+      return false;
+    }
+  }
+
+  if (inputType === "password") {
+    if (!value || value.length < 8) {
+      alert("Password should be at least 8 characters long");
+      return false;
+    }
+  }
+  return true;
+}

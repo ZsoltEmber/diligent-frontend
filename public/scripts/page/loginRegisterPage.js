@@ -1,5 +1,5 @@
 import { loginWithEmailAndPassword, saveUserData } from "../client.js";
-import { changeForm, Component } from "../general.js";
+import { changeForm, Component, validateForm } from "../general.js";
 
 export function createForm(formType = "login") {
   //formType = "login" or "registrate"
@@ -69,18 +69,12 @@ export function createForm(formType = "login") {
     [buttonTitle],
     {
       click: async () => {
-        console.log("formtype", formType);
-        if (formType === "registrate") {
-          console.log("email input", emailInput.value);
-          if (!emailInput.value) {
-            alert("Provide an email address");
-            return;
-          }
-          if (!passwordInput.value || passwordInput.value.length < 8) {
-            alert("Password should be at least 8 characters long");
-            return;
-          }
+        const isEmailValid = validateForm("email", emailInput.value);
+        const isPasswordValid = validateForm("password", passwordInput.value);
 
+        if (!isEmailValid || !isPasswordValid) return;
+
+        if (formType === "registrate") {
           await saveUserData({
             email: emailInput.value,
             password: passwordInput.value,
