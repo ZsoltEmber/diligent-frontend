@@ -41,7 +41,6 @@ export async function updateData(getUpdatedData) {
 
 export async function saveUserData(newUserData) {
   try {
-    console.log("Sending user data:", newUserData);
     const response = await fetch("http://localhost:3000/users/add", {
       method: "POST",
       headers: {
@@ -63,7 +62,6 @@ export async function saveUserData(newUserData) {
 
 export async function loginWithEmailAndPassword(newUserData) {
   try {
-    console.log("Sending user data:", newUserData);
     const response = await fetch("http://localhost:3000/users/login", {
       method: "POST",
       headers: {
