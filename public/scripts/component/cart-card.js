@@ -1,4 +1,5 @@
 import { Component } from "../general.js";
+import CartForm from "./cart-form.js";
 
 /**
  * Creates a card component to represent the products in cart.
@@ -10,6 +11,7 @@ export default class CartCard{
     * @param {{id: number, title: string, price: number,  image: url, amount:number}} cartItem - the product object.
     */
     constructor(cartItem){
+        this.cartItem = cartItem;
         this.id= cartItem.id; this.title= cartItem.title;this. price= cartItem.price;this.  image= cartItem.image;this. amount=cartItem.amount;
         this.node = this.createNode();
     }
@@ -23,12 +25,12 @@ export default class CartCard{
     const productName = new Component("h4", { id: `product-name-${this.id}`, class: "product-name" }, [this.title]).render();
     const productPrice = new Component("p", { id: `product-price-${this.id}`, class: "product-price" }, [`Price: ${this.price}$`]).render();
     const productImage = new Component("img", { id: `product-img-${this.id}`, class: "product-img", src: this.image }).render();
-    const productDescription = new Component("p", { id: `product-desc-${this.id}`, class: "product-desc" }, [this.description]).render();
+
     const cartBtn = new Component("img", { id: `cart-icon-${this.id}`, class: "cart-btn card-btn", src: "../../styles/resource/shopping-cart-white.png", alt: "cart-icon" }).render();
     const favBtn = new Component("img", { id: `fav-icon-${this.id}`, class: "fav-icon card-btn", src: "../../styles/resource/white-heart.png" }).render();
-
     const productDetailsContainerLeft = new Component("div", { id: `product-left-container-${this.id}`, class: "product-left-container" }, [productImage]).render();
-    const productDetailsContainerRight = new Component("div", { id: `product-right-container-${this.id}`, class: "product-right-container" }, [productPrice, productDescription]).render();
+    const cartForm = new CartForm(this.cartItem).render();
+    const productDetailsContainerRight = new Component("div", { id: `product-right-container-${this.id}`, class: "product-right-container" }, [productPrice,cartForm]).render();
     const productDetailsContainer = new Component("div", { id: `product-details-container-${this.id}`, class: "product-details-container" }, [productDetailsContainerLeft, productDetailsContainerRight]).render();
     const buttonContainer = new Component("div", { id: `button-container-${this.id}`, class: "button-container" }, [favBtn, cartBtn]).render();
     const productHeaderContainer = new Component("div", { id: `product-header-container-${this.id}`, class: "product-header-container" }, [productName, buttonContainer]).render();
