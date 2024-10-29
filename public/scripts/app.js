@@ -1,9 +1,8 @@
-import {Component} from "./general.js";
+import {createMainPage} from "./page/mainPage.js"
 
-import { createForm } from "./page/loginRegisterPage.js";
 
 
 window.onload = () => {
-  console.log("hello world");
-  document.body.append(createForm("registrate"));
+  
+  createMainPage().then(page=> document.getElementById('root').append(page));
 };

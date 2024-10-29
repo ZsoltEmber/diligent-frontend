@@ -256,8 +256,10 @@ body {
 
 .product-card {
   background: whitesmoke;
-  height: 50vh;
-  width: 30vw;
+  /* height: 50vh;
+  width: 30vw; */
+  height: auto;
+  width: min-content;
   border-radius: 12px;
   box-shadow: 1px 2px 5px #333;
   overflow: hidden;
