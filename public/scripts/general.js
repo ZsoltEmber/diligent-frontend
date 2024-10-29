@@ -47,6 +47,10 @@ export function validateForm(inputType, value) {
       alert("Provide an email address");
       return false;
     }
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value)) {
+      alert("Please provide a valid email address");
+      return false;
+    }
   }
 
   if (inputType === "password") {
