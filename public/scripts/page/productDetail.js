@@ -1,4 +1,5 @@
-import { Component } from "../general";
+import { Component } from "../general.js";
+import StarRatings from '../components/star-ratings.js';
 
 export class ProductDetail {
   constructor({ id, title, price, description, category, image, rating }) {

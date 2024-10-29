@@ -1,9 +1,11 @@
 import {Component} from "./general.js";
+import CartForm from "./component/cart-form.js";
+import { ProductDetail } from "./page/productDetail.js";
 
-import { createForm } from "./page/loginRegisterPage.js";
 
 
 window.onload = () => {
   console.log("hello world");
-  document.body.append(createForm());
+ 
+
 };
