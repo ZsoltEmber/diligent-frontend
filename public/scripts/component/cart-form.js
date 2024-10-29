@@ -1,4 +1,4 @@
-import { findInCartById } from "../cart.js";
+import { findInCartById,addToCart } from "../cart.js";
 import { Component } from "../general.js";
 
 /**
@@ -14,10 +14,18 @@ export default class CartForm {
     this.product = getProduct;
     this.amount = findInCartById(this.product.id)? findInCartById(this.product.id).product.amount : 1;
     this.inputField = this.createInputField();
-    
+    this.isAddedToCart = false;
     this.node = new Component('form',{class:"cart-form--form"}).render();
     }
-    
+    handleAddToCart =(event)=>{
+        event.preventDefault();
+        this.amount = parseInt(this.inputField.value);
+        addToCart(this.product, this.amount);
+        this.isAddedToCart = true;
+        this.render();
+        this.isAddedToCart = false;
+    }
+
     createInputField (){
         const inputField = new Component('input',{
             class:"form-input",
@@ -33,7 +41,7 @@ export default class CartForm {
     } 
 
     render(){
-        
+        this.node.innerHTML = '';
         const labelForInput = new Component('label',{for:`amount-of-${this.product.title}`},["Amount:  ",this.inputField]).render();
         const inputContainerDiv = new Component('div',{class:"cart-form--container"},[labelForInput]).render();
         
@@ -41,16 +49,16 @@ export default class CartForm {
             "button",
             { class: "product-detail--add-to-cart-btn form-button" },
             ["Add to Cart"],
-            {
-              click: () => {
-                alert("Added to Cart");
-              },
-            }
+            {click:this.handleAddToCart},
           ).render();
           
         const buttonContainerDiv = new Component('div',{class:"cart-form--container"},[addToCartBtn]).render();
 
-        this.node.append(inputContainerDiv,buttonContainerDiv);
+        const userFeedbackP = this.isAddedToCart
+        ? new Component('p',{class:"quick-feedback"},["Product added to Cart!"]).render()
+        : '';
+
+        this.node.append(userFeedbackP,inputContainerDiv,buttonContainerDiv);
         return this.node;
     }
 }

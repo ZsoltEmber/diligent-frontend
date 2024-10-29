@@ -204,6 +204,7 @@ body {
 /* Cart form */
 
 .cart-form--form{
+  position: relative;
   display: flex;
   flex-direction: row;
   background-color: white;
@@ -222,4 +223,29 @@ body {
 }
 .cart-form--container .form-input{
   width: max-content;
+}
+.quick-feedback{
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: inherit;
+  background-color: whitesmoke;
+  border-radius: inherit;
+  color: red;
+  visibility: hidden;
+  animation-name: showAndHide;
+  animation-duration: 2.5s; 
+  animation-timing-function: linear;
+}
+
+@keyframes showAndHide {
+  0% {
+    visibility: visible;
+    opacity: 0.5;}
+  10% {opacity: 0.1;}
+  90% {opacity: 0.1;}
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
 }
