@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
@@ -116,6 +116,7 @@ body {
 .footer-text {
   color: #0066c0;
 }
+
 .footer-text:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -177,6 +178,7 @@ body {
   background-color: white;
   border-radius: inherit;
 }
+
 .dinamic-text-size {
   font-size: clamp(1rem, 2.5vw, 2rem);
 }
@@ -261,17 +263,21 @@ body {
   border-radius: 12px;
   box-shadow: 1px 2px 5px #333;
   overflow: hidden;
-  
+  transition: 0.3s ease;
 }
 
-.product-header-container{
+.product-card:hover{
+  box-shadow: 1px 7px 10px #333;
+}
+
+.product-header-container {
   background: #333;
   padding: 20px;
   display: flex;
   justify-content: space-between;
 }
 
-.button-container{
+.button-container {
   display: flex;
   flex-direction: row;
 }
@@ -290,9 +296,14 @@ body {
   gap: 3rem;
 }
 
-.card-btn{
+.card-btn {
   height: 30px;
   width: 30px;
   padding: 2px;
+  border-radius: 6px;
+  transition: 0.3s ease;
 }
 
+.card-btn:hover {
+  background-color: rgba(255, 255, 255, 0.252);
+}
