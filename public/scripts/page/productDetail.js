@@ -68,7 +68,7 @@ export class ProductDetail {
       [productImg, productZoomImg]
     ).render();
 
-    const titleH1 = new Component("h1", { class: "dinamic-text-size" }, [
+    const titleH1 = new Component("h1", { class: "dinamic-text-size dark-grey-background" }, [
       this.title,
     ]).render();
     const productRatingComponent = new StarRatings(

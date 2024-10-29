@@ -163,6 +163,14 @@ body {
 .dinamic-text-size{
   font-size: clamp(1rem, 2.5vw, 2rem); 
 }
+.dark-grey-background{
+  background-color: #333;
+  color: whitesmoke;
+  margin: 0 0 1rem 0 ;
+  padding: 1rem;
+  border-radius: 1em 1em 0 0;
+}
+
 .product-detail--description{
   overflow:hidden;
   font-size: clamp(9pt, 12pt, 15pt); 
