@@ -113,6 +113,14 @@ body {
   color: #333;
 }
 
+.footer-text {
+  color: #0066c0;
+}
+.footer-text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /*Product detail page*/
 .product-detail--wrapper {
   background-color: rgb(237, 255, 255);
@@ -124,11 +132,9 @@ body {
 }
 
 .product-detail--img {
-  max-width: 45vmin;
-  /* TODO making desin responsive*/
+  max-width: 45vmin; /* TODO making desin responsive*/
   max-height: 45vmin;
 }
-
 .product-detail--img-container {
   display: flex;
   max-width: 50%;
@@ -138,7 +144,6 @@ body {
   padding: 1rem;
   border-radius: 1rem;
 }
-
 .product-detail--zoom-img {
   position: absolute;
   left: 2rem;
@@ -149,12 +154,10 @@ body {
   border-radius: 50%;
   box-shadow: 1px 2px 5px #333;
 }
-
 .product-detail--zoom-img:hover {
   background-color: white;
   border-width: 3;
 }
-
 .display-flex-container {
   display: flex;
   flex-direction: row;
@@ -163,18 +166,15 @@ body {
   justify-content: space-between;
   gap: 2rem;
 }
-
 .product-detail--info-container {
   width: 50%;
   padding: 1rem;
   background-color: white;
   border-radius: inherit;
 }
-
 .dinamic-text-size {
   font-size: clamp(1rem, 2.5vw, 2rem);
 }
-
 .product-detail--description {
   overflow: hidden;
 }
@@ -183,21 +183,24 @@ body {
   font-size: larger;
   font-weight: 800;
 }
-
 .product-detail--dialog-img {
   width: 100%;
 }
 
 .product-detail--img-container-dialog {
   border: 0 solid white;
+.product-detail--img-container-dialog {
+  border: 0 solid white;
   border-radius: inherit;
 }
 
+.product-detail--img-container-dialog::backdrop {
 .product-detail--img-container-dialog::backdrop {
   background: rgba(10, 10, 10, 0.3);
 }
 
 @media only screen and (max-width: 500px) {
+  .display-flex-container {
   .display-flex-container {
     flex-direction: column-reverse;
   }
@@ -205,12 +208,12 @@ body {
   .product-detail--img-container {
     max-width: 100%;
   }
-
   .product-detail--img {
     max-width: 65vmin;
     max-height: 65vmin;
   }
 
+  .product-detail--info-container {
   .product-detail--info-container {
     width: 100%;
   }

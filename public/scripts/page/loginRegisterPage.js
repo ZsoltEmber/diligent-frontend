@@ -1,4 +1,5 @@
-import { Component } from "../general.js";
+import { loginWithEmailAndPassword, saveUserData } from "../client.js";
+import { changeForm, Component, validateForm } from "../general.js";
 
 export function createForm(formType = "login") {
   //formType = "login" or "registrate"
@@ -7,6 +8,7 @@ export function createForm(formType = "login") {
   const formTitle = formType === "login" ? "Sign in" : "Create account";
   const formSubtitle =
     formType === "login" ? "Please enter your email and password." : "";
+  const formFooterText = formType === "login" ? "Create account" : "Sign in";
 
   const headerTitle = new Component(
     "h2",
@@ -63,8 +65,30 @@ export function createForm(formType = "login") {
 
   const formButton = new Component(
     "button",
-    { id: `${formType}-button`, class: "form-button" },
-    [buttonTitle]
+    { id: `${formType}-button`, class: "form-button", type: "button" },
+    [buttonTitle],
+    {
+      click: async () => {
+        const isEmailValid = validateForm("email", emailInput.value);
+        const isPasswordValid = validateForm("password", passwordInput.value);
+
+        if (!isEmailValid || !isPasswordValid) return;
+
+        if (formType === "registrate") {
+          await saveUserData({
+            email: emailInput.value,
+            password: passwordInput.value,
+          });
+        }
+
+        if (formType === "login") {
+          await loginWithEmailAndPassword({
+            email: emailInput.value,
+            password: passwordInput.value,
+          });
+        }
+      },
+    }
   ).render();
 
   const form = new Component(
@@ -73,10 +97,27 @@ export function createForm(formType = "login") {
     [emailLabel, passwordLabel, formButton]
   ).render();
 
+  const footerText = new Component(
+    "p",
+    { id: "footer-text", class: "footer-text" },
+    [formFooterText],
+    {
+      click: () => {
+        changeForm(formType);
+      },
+    }
+  ).render();
+
+  const formFooter = new Component(
+    "div",
+    { id: "form-footer", class: "form-footer" },
+    [footerText]
+  ).render();
+
   const formWrapper = new Component(
     "div",
     { id: `${formType}-container`, class: "form-wrapper" },
-    [formHeader, form]
+    [formHeader, form, formFooter]
   );
 
   return formWrapper.render();
