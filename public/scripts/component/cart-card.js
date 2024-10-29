@@ -34,6 +34,7 @@ export default class CartCard{
     const productHeaderContainer = new Component("div", { id: `product-header-container-${this.id}`, class: "product-header-container" }, [productName, buttonContainer]).render();
 
     this.node.append(productHeaderContainer, productDetailsContainer);
+    return this.node;
     }
 }
    
@@ -48,5 +49,5 @@ const cartProductToTest = {
   }
 
 let z = new CartCard(cartProductToTest);
-console.log("CartCard: ",z);
+console.log("CartCard: ",z.node);
 document.getElementById('root').append(z.render())
