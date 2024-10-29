@@ -1,4 +1,5 @@
-import { Component } from "../general";
+import { Component } from "../general.js";
+import StarRatings from "../component/star-ratings.js"
 
 export class ProductDetail {
   constructor({ id, title, price, description, category, image, rating }) {
@@ -123,4 +124,4 @@ let x = new ProductDetail({
   },
 });
 console.log(x);
-document.getElementById("root").append(x.render());
+// document.getElementById("root").append(x.render());
