@@ -93,7 +93,7 @@ export class ProductDetail {
     const priceP = new Component("p", {}, [
       "price: ",
       priceSpan,
-      " EUR",
+      "$",
     ]).render();
 
     const priceContainer = new Component(
