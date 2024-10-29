@@ -6,8 +6,8 @@ export function createProductCard(product) {
     const productPrice = new Component("p", { id: "product-price", class: "product-price" }, [`Price: ${product.price}$`]).render();
     const productImage = new Component("img", { id: "product-img", class: "product-img", src: product.image }).render();
     const productDescription = new Component("p", { id: "product-desc", class: "product-desc" }, [product.description]).render();
-    const cartBtn = new Component("img", { id: "cart-icon", class: "cart-btn card-btn", src: "../shopping-cart-white.png", alt: "cart-icon" }).render();
-    const favBtn = new Component("img", { id: "fav-icon", class: "fav-icon card-btn", src: "../white-heart.png" }).render();
+    const cartBtn = new Component("img", { id: "cart-icon", class: "cart-btn card-btn", src: "../../styles/resource/shopping-cart-white.png", alt: "cart-icon" }).render();
+    const favBtn = new Component("img", { id: "fav-icon", class: "fav-icon card-btn", src: "../../styles/resource/white-heart.png" }).render();
 
     const productDetailsContainerLeft = new Component("div", { id: "product-left-container", class: "product-left-container" }, [productImage]).render();
     const productDetailsContainerRight = new Component("div", { id: "product-right-container", class: "product-right-container" }, [productPrice, productDescription]).render();
@@ -19,3 +19,4 @@ export function createProductCard(product) {
 
     return productCard.render();
 }
+

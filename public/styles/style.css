@@ -189,18 +189,15 @@ body {
 
 .product-detail--img-container-dialog {
   border: 0 solid white;
-.product-detail--img-container-dialog {
-  border: 0 solid white;
   border-radius: inherit;
 }
 
 .product-detail--img-container-dialog::backdrop {
-.product-detail--img-container-dialog::backdrop {
   background: rgba(10, 10, 10, 0.3);
 }
 
+
 @media only screen and (max-width: 500px) {
-  .display-flex-container {
   .display-flex-container {
     flex-direction: column-reverse;
   }
@@ -213,7 +210,6 @@ body {
     max-height: 65vmin;
   }
 
-  .product-detail--info-container {
   .product-detail--info-container {
     width: 100%;
   }
