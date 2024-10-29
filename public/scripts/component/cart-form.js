@@ -14,7 +14,14 @@ export default class CartForm {
     this.product = getProduct;
     this.amount = findInCartById(this.product.id)? findInCartById(this.product.id).product.amount : 1;
     this.inputField = this.createInputField();
-    this.isAddedToCart = false;
+    this.isAddedToCart = Boolean(findInCartById(this.product.id));
+    this.isFirstLoad = true;
+    this.addToCartBtn = new Component(
+        "button",
+        { class: "product-detail--add-to-cart-btn form-button" },
+        [this.addToCartBtnText],
+        {click:this.handleAddToCart},
+      ).render();
     this.node = new Component('form',{class:"cart-form--form"}).render();
     }
     handleAddToCart =(event)=>{
@@ -22,9 +29,10 @@ export default class CartForm {
         this.amount = parseInt(this.inputField.value);
         addToCart(this.product, this.amount);
         this.isAddedToCart = true;
+        this.isFirstLoad = false;
         this.render();
-        this.isAddedToCart = false;
     }
+    get addToCartBtnText(){return this.isAddedToCart? "Change amount" : "Add to Cart";}
 
     createInputField (){
         const inputField = new Component('input',{
@@ -45,17 +53,14 @@ export default class CartForm {
         const labelForInput = new Component('label',{for:`amount-of-${this.product.title}`},["Amount:  ",this.inputField]).render();
         const inputContainerDiv = new Component('div',{class:"cart-form--container"},[labelForInput]).render();
         
-        const addToCartBtn = new Component(
-            "button",
-            { class: "product-detail--add-to-cart-btn form-button" },
-            ["Add to Cart"],
-            {click:this.handleAddToCart},
-          ).render();
+        
+        
           
-        const buttonContainerDiv = new Component('div',{class:"cart-form--container"},[addToCartBtn]).render();
+        const buttonContainerDiv = new Component('div',{class:"cart-form--container"},[this.addToCartBtn]).render();
 
-        const userFeedbackP = this.isAddedToCart
-        ? new Component('p',{class:"quick-feedback"},["Product added to Cart!"]).render()
+        const userFeedbackText = this.isAddedToCart? "Amount in cart changed!" : "Product added to Cart!";
+        const userFeedbackP = this.isAddedToCart && !this.isFirstLoad
+        ? new Component('p',{class:"quick-feedback"},[userFeedbackText]).render()
         : '';
 
         this.node.append(userFeedbackP,inputContainerDiv,buttonContainerDiv);
