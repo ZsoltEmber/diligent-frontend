@@ -57,7 +57,7 @@ export default class CartForm {
         
           
         const buttonContainerDiv = new Component('div',{class:"cart-form--container"},[this.addToCartBtn]).render();
-
+        
         const userFeedbackText = this.isAddedToCart? "Amount in cart changed!" : "Product added to Cart!";
         const userFeedbackP = this.isAddedToCart && !this.isFirstLoad
         ? new Component('p',{class:"quick-feedback"},[userFeedbackText]).render()

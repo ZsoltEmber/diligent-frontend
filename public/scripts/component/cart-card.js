@@ -14,6 +14,7 @@ export default class CartCard{
     constructor(cartItem){
         this.cartItem = cartItem;
         this.id= cartItem.id; this.title= cartItem.title;this. price= cartItem.price;this.  image= cartItem.image;
+        this.totalPriceP = new Component('p',{},[]).render();
         this.node = this.createNode();
     }
     get amount(){
@@ -27,6 +28,11 @@ export default class CartCard{
         removeCartItem(this.id);
         this.node.remove();
     }
+    updateProductsTotalPrice = () =>{
+        const totalPrice = this.price*this.amount;
+        this.totalPriceP.innerText = `${totalPrice}$ total`;
+        return this.totalPriceP;
+    }
 
     render(){
     this.node.innerHTML = '';
@@ -34,15 +40,12 @@ export default class CartCard{
     const productPrice = new Component("p", { id: `product-price-${this.id}`, class: "product-price" }, [`Price: ${this.price}$`]).render();
     const productImage = new Component("img", { id: `product-img-${this.id}`, class: "product-img", src: this.image }).render();
     
-    const totalPrice = this.price*this.amount;
-    const totalPriceP = new Component('p',{},[`${totalPrice}$ total`]).render();
-
     const productDetailsContainerLeft = new Component("div", { id: `product-left-container-${this.id}`, class: "product-left-container" }, [productImage]).render();
     const cartFormClass = new CartForm(this.cartItem);
-          cartFormClass.addToCartBtn.addEventListener("click",()=>this.render());;
+          cartFormClass.addToCartBtn.addEventListener("click",this.updateProductsTotalPrice);;
     const cartForm = cartFormClass.render();      
     const removeProductFromCartBtn = new Component('button',{class:"delete-from-cart-button"},["Remove product"],{click:this.handleRemoveItem}).render();
-    const productDetailsContainerRight = new Component("div", { id: `product-right-container-${this.id}`, class: "product-right-container" }, [productPrice,totalPriceP,cartForm,removeProductFromCartBtn]).render();
+    const productDetailsContainerRight = new Component("div", { id: `product-right-container-${this.id}`, class: "product-right-container" }, [productPrice,this.updateProductsTotalPrice(),cartForm,removeProductFromCartBtn]).render();
     const productDetailsContainer = new Component("div", { id: `product-details-container-${this.id}`, class: "product-details-container" }, [productDetailsContainerLeft, productDetailsContainerRight]).render();
     
     const productHeaderContainer = new Component("div", { id: `product-header-container-${this.id}`, class: "product-header-container" }, [productName]).render();
