@@ -1,7 +1,7 @@
-import { listCartCards } from "./component/cart-list.js";
+import { createCartPage } from "./component/cart-list.js";
 
 window.onload = () => {
   console.log("hello world");
-  listCartCards();
+  document.getElementById('root').append(createCartPage());
 
 };

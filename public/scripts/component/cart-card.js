@@ -30,7 +30,7 @@ export default class CartCard{
     }
     updateProductsTotalPrice = () =>{
         const totalPrice = this.price*this.amount;
-        this.totalPriceP.innerText = `${totalPrice}$ total`;
+        this.totalPriceP.innerText = `${totalPrice}$ subtotal`;
         return this.totalPriceP;
     }
 
@@ -38,7 +38,7 @@ export default class CartCard{
     this.node.innerHTML = '';
     const productName = new Component("h4", { id: `product-name-${this.id}`, class: "product-name" }, [this.title]).render();
     const productPrice = new Component("p", { id: `product-price-${this.id}`, class: "product-price" }, [`Price: ${this.price}$`]).render();
-    const productImage = new Component("img", { id: `product-img-${this.id}`, class: "product-img", src: this.image }).render();
+    const productImage = new Component("img", { id: `cart-product-img-${this.id}`, class: "cart-product-img", src: this.image }).render();
     
     const productDetailsContainerLeft = new Component("div", { id: `product-left-container-${this.id}`, class: "product-left-container" }, [productImage]).render();
     const cartFormClass = new CartForm(this.cartItem);
