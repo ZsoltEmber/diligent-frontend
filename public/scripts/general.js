@@ -1,8 +1,8 @@
 /**
  * @param {string} tag - the tag of the html element
- * @param {Object} attributes - a key-value pair, representing html attributes for expl. {id:'idOfElement'}
+ * @param {object} attributes - a key-value pair, representing html attributes for expl. {id:'idOfElement'}
  * @param {Array} attributes - an array of nodes (html elements) to append to the element as children
- * @param {Object} listenerObj - a key value pair, the key is the event name, value is the function to add as eventListener {'click':()=>{console.log('')}}
+ * @param {object} listenerObj - a key value pair, the key is the event name, value is the function to add as eventListener {'click':()=>{console.log('')}}
  */
 export class Component {
   constructor(tag = "div", attributes = {}, children = [], listenerObj) {
@@ -31,3 +31,4 @@ export class Component {
     return node;
   }
 }
+
