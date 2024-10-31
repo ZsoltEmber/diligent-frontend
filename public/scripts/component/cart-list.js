@@ -70,7 +70,3 @@ export function createCartPage() {
   return cartPage;
 }
 
-
-//$0.addEventListener('click',(e)=>{console.log(e.target.tagName)})
-
-// TEST- To DELETE
