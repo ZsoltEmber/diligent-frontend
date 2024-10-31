@@ -1,62 +1,22 @@
 [
   {
     "id": 1,
-    "email": "test@test.com",
-    "password": "test"
+    "email": "emily.brown@example.com",
+    "password": "EmilyB123!"
   },
   {
     "id": 2,
-    "email": "admin@admin.com",
-    "password": "admin"
+    "email": "michael.smith@example.com",
+    "password": "MSmith2024#"
   },
   {
     "id": 3,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
+    "email": "sarah.jones@example.com",
+    "password": "SarahJ@567"
   },
   {
     "id": 4,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 5,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 6,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 7,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 8,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 9,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 10,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 11,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
-  },
-  {
-    "id": 12,
-    "email": "kicsimicsi@csicsi.li",
-    "password": "shdlkdlk"
+    "email": "johndoe@company.com",
+    "password": "johndoe1234"
   }
 ]
