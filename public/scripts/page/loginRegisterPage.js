@@ -2,6 +2,7 @@ import { loginWithEmailAndPassword, saveUserData } from "../client.js";
 import { changeForm, validateForm } from "../utils.js";
 import { Component } from "../general.js";
 import { createMainPage } from "./mainPage.js";
+import { createNavbar } from "../component/navbar.js";
 
 export function createForm(formType = "login") {
   //formType = "login" or "registrate"
@@ -132,4 +133,9 @@ async function redirectToMainPage() {
   const mainPage = await createMainPage();
   root.innerHTML = "";
   root.append(mainPage);
+}
+
+export default function createLoginPage(formType){
+  const formContainer = new Component('div',{class:"main"},[createNavbar(),createForm(formType)]).render();
+  return formContainer;
 }

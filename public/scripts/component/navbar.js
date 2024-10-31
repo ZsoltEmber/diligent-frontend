@@ -1,5 +1,5 @@
 import { Component } from "../general.js";
-import { createForm } from "../page/loginRegisterPage.js";
+import createLoginPage from "../page/loginRegisterPage.js";
 import { getCartContent } from "../cart.js";
 import { createMainPage } from "../page/mainPage.js";
 import { createCartPage } from "../page/cartPage.js";
@@ -21,7 +21,7 @@ export function createNavbar() {
 function handleClick(formType) {
     const root = document.getElementById("root")
     root.innerHTML = "";
-    root.append(createForm(formType))
+    root.append(createLoginPage(formType));
 }
 
 function handleClickCart() {
