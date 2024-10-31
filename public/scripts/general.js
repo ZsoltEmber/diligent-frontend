@@ -30,5 +30,6 @@ export class Component {
 
     return node;
   }
+
 }
 
