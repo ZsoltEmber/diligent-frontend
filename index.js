@@ -9,6 +9,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+const USER_DATABASE = "./database/users.json";
+
+let users = JSON.parse(fs.readFileSync(USER_DATABASE, "utf-8"));
+
 app.get("/data", (req, res) => {
   fs.readFile(path.join("./database/", "data.json"), "utf8", (err, data) => {
     if (err) {
@@ -39,11 +43,6 @@ app.post("/data", (req, res) => {
   );
 });
 
-// post users
-
-const userDatabase = "./database/users.json";
-let users = JSON.parse(fs.readFileSync(userDatabase, "utf-8"));
-
 app.get("/users", (req, res) => {
   res.json(users);
 });
@@ -59,17 +58,15 @@ app.post("/users/add", (req, res) => {
 
   const newUser = { id: users.length + 1, email, password };
   users.push(newUser);
-  fs.writeFileSync(userDatabase, JSON.stringify(users, null, 2), "utf-8");
+  fs.writeFileSync(USER_DATABASE, JSON.stringify(users, null, 2), "utf-8");
 
   res.status(201).json(newUser);
   console.log(`Successfully registered new user: ${email}`);
 });
 
-//
-
 app.post("/users/login", (req, res) => {
   const { email, password } = req.body;
-  let users = JSON.parse(fs.readFileSync(userDatabase, "utf-8"));
+  let users = JSON.parse(fs.readFileSync(USER_DATABASE, "utf-8"));
   console.log("Received data:", req.body);
   const user = users.find(
     (user) => user.email === email && user.password === password
@@ -81,8 +78,6 @@ app.post("/users/login", (req, res) => {
 
   res.status(200).json({ id: user.id });
 });
-
-//
 
 app.listen(port, () => {
   console.log(`Runs on: http://localhost:${port}`);

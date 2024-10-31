@@ -1,5 +1,7 @@
 import { loginWithEmailAndPassword, saveUserData } from "../client.js";
-import { changeForm, Component, validateForm } from "../general.js";
+import { changeForm, validateForm } from "../utils.js";
+import { Component } from "../general.js";
+import { createMainPage } from "./mainPage.js";
 
 export function createForm(formType = "login") {
   //formType = "login" or "registrate"
@@ -79,6 +81,7 @@ export function createForm(formType = "login") {
             email: emailInput.value,
             password: passwordInput.value,
           });
+          await redirectToMainPage();
         }
 
         if (formType === "login") {
@@ -86,6 +89,7 @@ export function createForm(formType = "login") {
             email: emailInput.value,
             password: passwordInput.value,
           });
+          await redirectToMainPage();
         }
       },
     }
@@ -121,4 +125,11 @@ export function createForm(formType = "login") {
   );
 
   return formWrapper.render();
+}
+
+async function redirectToMainPage() {
+  const root = document.getElementById("root");
+  const mainPage = await createMainPage();
+  root.innerHTML = "";
+  root.append(mainPage);
 }
