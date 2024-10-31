@@ -308,8 +308,9 @@ body {
 .cart-list--container{
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  justify-content: center;
   padding: 1rem;
+
 }
 .cart-list--products{
   display: flex;
@@ -319,9 +320,9 @@ body {
   overflow-y: scroll;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: right;
 }
 .cart-list--total-info{
-  
   z-index: 100;
   top: 1rem;
   right: 1rem;
@@ -333,6 +334,10 @@ body {
   height: max-content;
   min-width: 35vw;
   padding: 1rem;
+}
+.cart-list--total-info-delivery-container{
+  display: flex;
+  justify-content: space-around;
 }
 .cart-list--total-info-prices-container{
   display: flex;
