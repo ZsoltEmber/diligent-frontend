@@ -1,6 +1,7 @@
 import { Component } from "../general.js";
 import CartForm from "../component/cart-form.js";
 import StarRatings from "../component/star-ratings.js"
+import { createNavbar } from "../component/navbar.js";
 
 export class ProductDetail {
   constructor({ id, title, price, description, category, image, rating }) {
@@ -22,6 +23,7 @@ export class ProductDetail {
 
   render() {
     this.node.innerHTML = "";
+
     const dialogImg = new Component(
       "img",
       {
@@ -131,4 +133,10 @@ export class ProductDetail {
     );
     return this.node;
   }
+}
+
+export default function createProductDetailPage(product){
+  const productDetail = new ProductDetail(product).render();
+  const productDetailPage = new Component('div',{class:"main"},[createNavbar(),productDetail]).render();
+  return productDetailPage;
 }

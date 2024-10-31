@@ -1,5 +1,5 @@
 import { Component } from "../general.js";
-import { ProductDetail } from "../page/productDetail.js";
+import createProductDetailPage  from "../page/productDetail.js";
 
 export function createProductCard(product) {
 
@@ -23,9 +23,9 @@ export function createProductCard(product) {
 
 
 function handleClick(product) {
-    const productDetail = new ProductDetail(product)
+    
     const root = document.getElementById("root");
     root.innerHTML = "";
-    root.append(productDetail.render())
+    root.append(createProductDetailPage(product))
 }
 

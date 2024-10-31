@@ -25,4 +25,3 @@ function handleClick(formType) {
 function chooseCartImage(){
    return getCartContent().length === 0? "../../styles/resource/shopping-cart-white.png":"../../styles/resource/shopping-cart-full.png"
 }
-console.log(chooseCartImage()) ;
