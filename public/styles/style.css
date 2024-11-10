@@ -32,7 +32,7 @@
 }
 
 body {
-  background-color: aqua;
+  background-color: rgb(237, 255, 255);
 }
 
 .main {
@@ -399,7 +399,7 @@ body {
     width: 40vmin;
     height: auto;
   }
-=======
+
 .product-details-container {
   display: flex;
 
@@ -440,7 +440,10 @@ body {
   overflow: hidden;
   transition: 0.3s ease;
 }
-
+.product-desc-button{
+  margin-right: 10px;
+  cursor: pointer;
+}
 @media (max-width: 600px) {
   .product-card {
     width: 90%;
@@ -454,6 +457,7 @@ body {
   }
   .product-desc-button{
     margin-bottom: 10px;
+    
     }
 }
 
@@ -472,7 +476,7 @@ body {
     margin-bottom: 10px;
     }
 }
-
+}
 
 
 .product-card:hover {
